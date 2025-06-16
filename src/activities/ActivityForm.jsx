@@ -1,12 +1,14 @@
 import useMutation from "../api/useMutation";
 
 export const ActivityForm = () => {
-  
+    
+  const {mutate} = useMutation(`POST`, `/activities`, [`activities`]);
+
   const trySubmit = (formData) =>{
     const actName = formData.get("actName");
     const actDesc = formData.get("actDesc");
     const newActivity = {actName, actDesc};
-    useMutation();
+    mutate(newActivity);
   }
 
   return (

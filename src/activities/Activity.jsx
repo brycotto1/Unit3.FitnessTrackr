@@ -3,11 +3,12 @@ import { useAuth } from "../auth/AuthContext";
 
 export const Activity = ({activity}) => {
   const {token, userID} = useAuth();
+  const {mutate} = useMutation(`DELETE`, `/activities/${activity.id}`, [`activities`]);
   
   const tryDelete = () => {
     if(activity.creatorId === userID)
       {
-        useMutation("DELETE", `activities/${activity.id}`, )
+        mutate();
       }
   }
 
